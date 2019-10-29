@@ -5,12 +5,12 @@ $card-background-color: rgba(41, 40, 39, 0.726);
 $card-border-radius: 5px;
 $card-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.8), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 
-$main-text-color: #90b6e2;
+$main-text-color: #a3ceff;
 
-$radial-session-color: #90b6e2;
-$radial-break-color: #4d6277;
-$radial-overlay-color: rgb(41, 40, 39, 0.8);
-
+$radial-session-color: #68bbff;
+$radial-break-color: #c5ff5b;
+$radial-overlay-color: rgb(54, 54, 54);
+$radial-bg-color: #c6e5ff;
 html, body{
     box-sizing: border-box;
     height: 100%;
@@ -150,6 +150,43 @@ body {
         &:hover{
             background-color: #7fa0be;
             transition: 0.5s;
+        }
+    }
+}
+
+//Radial Setup
+
+$increment: 3.6; //This will be used to calculate the number of degrees the gradient should be angled by
+
+//For loop in SASS
+@for $i from 0 through 100 {
+    //Making a css ruleset for .step-0 all the way through .step-100
+    .step-#{$i} {
+        @if $i < 50{
+            //Calculating the angle for our gradient
+            $nextDeg: 90deg + ($increment * $i);
+            &.session {
+                background-image: linear-gradient(90deg, $radial-bg-color 50%, transparent 50%, transparent),
+                linear-gradient($nextDeg, $radial-session-color 50%, $radial-bg-color 50%, $radial-bg-color);
+            }
+            &.break {
+                background-image: linear-gradient(90deg, $radial-bg-color 50%, transparent 50%, transparent),
+                linear-gradient($nextDeg, $radial-break-color 50%, $radial-bg-color 50%, $radial-bg-color);
+                
+            }
+        } @else {
+            $nextDeg: -90deg + ($increment * ($i - 50));
+            &.session {
+                background-image: linear-gradient($nextDeg, $radial-session-color 50%, transparent 50%, transparent), 
+                linear-gradient(270deg, $radial-session-color 50%, $radial-bg-color 50%,
+                $radial-bg-color);
+            }
+            &.break {
+                background-image: linear-gradient($nextDeg, $radial-break-color 50%, transparent 50%, transparent), 
+                linear-gradient(270deg, $radial-break-color 50%, $radial-bg-color 50%,
+                $radial-bg-color);
+            }
+            
         }
     }
 }
