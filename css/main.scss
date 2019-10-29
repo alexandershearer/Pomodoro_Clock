@@ -1,0 +1,155 @@
+$background-gradient-start-color: #2d3a46;
+$background-gradient-end-color: #90b6e2;
+
+$card-background-color: rgba(41, 40, 39, 0.726);
+$card-border-radius: 5px;
+$card-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.8), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+
+$main-text-color: #90b6e2;
+
+$radial-session-color: #90b6e2;
+$radial-break-color: #4d6277;
+$radial-overlay-color: rgb(41, 40, 39, 0.8);
+
+html, body{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: linear-gradient(45deg, $background-gradient-start-color, $background-gradient-end-color);
+    padding-top: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    @media (min-height: 500px) {
+        align-items: center;
+        padding-top: 0;
+    }
+}
+
+.clock {
+    width: 300px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: $card-background-color;
+    box-shadow: $card-box-shadow;
+    border-radius: $card-border-radius;
+
+    .progress-radial {
+        display: inline-block;
+        position: relative;
+        font-size: 2.2em;
+        width: 6em;
+        padding-bottom: 6em;
+        border-radius: 50%;
+        background-color: $radial-session-color;
+        box-shadow: 0 12px 28px 0 rgba(39, 39, 39, 0.8), 0 20px 40px 0 rgba(37, 37, 37, 0.21);
+
+        .overlay {
+            position: absolute;
+            top: 3%;
+            bottom: 3%;
+            left: 3%;
+            right: 3%;
+            padding-top: 34%;
+            border-radius: 50%;
+            background-color: $radial-overlay-color;
+            color: #90b6e2;
+
+            &.session .overlay {
+                color: $radial-session-color;
+            }
+    
+            &.break .overlay {
+                color: $radial-break-color;
+            }
+        }
+    }
+
+    .setting {
+        border-top: 1.5px solid #90b6e2;
+        border-bottom: 1.5px solid #90b6e2;
+    
+        .time-session, .time-break {
+            display: inline-block;
+            padding: 20px;
+    
+            h5 {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+    
+            button {
+                background-color: #90b6e2;
+                border: none;
+                width: 30px;
+                height: 30px;
+                transition: 0.5s;
+                margin: 0 7px;
+                font-weight: bolder;
+                box-shadow: 0 10px 18px 0 rgba(39, 39, 39, 0.8), 0 15px 26px 0 rgba(51, 51, 51, 0.21);
+            }
+            button:hover {
+                background-color: #6a86a1;
+                transition: 0.5s;
+            }
+
+            .time-session-display, .time-break-display {
+                margin-bottom: 8px;
+                margin-top: 0;
+                line-height: 1em;
+            }
+            .time-session-display {
+                color: $radial-session-color;
+            }
+        
+            .time-break-display {
+                color: $radial-session-color;
+            }
+
+
+        }
+    }
+    
+    .session-info, .setting, .controls {
+        color: $main-text-color;
+        text-shadow: 2px 2px 15px #90b6e2;
+    }
+
+}
+
+
+
+
+
+
+
+
+.controls {
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    button{
+        background-color: #9bc1e4;
+        border: none;
+        border-radius: 4px;
+        color: black;
+        font-size: 0.9em;
+        height: 40px;
+        width: 70px;
+        margin-left: 15px;
+        margin-right: 15px;
+        transition: 0.5s;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.287);
+
+        &:hover{
+            background-color: #7fa0be;
+            transition: 0.5s;
+        }
+    }
+}
